@@ -21,7 +21,8 @@
             android:ems="10"
             android:inputType="text"
             app:layout_column="0"
-            app:layout_row="0" />
+            app:layout_row="0"
+            android:saveEnabled="false"/>
 
         <EditText
             android:id="@+id/editTextText2"
@@ -30,7 +31,8 @@
             android:ems="10"
             android:inputType="text"
             app:layout_column="1"
-            app:layout_row="0" />
+            app:layout_row="0"
+            android:saveEnabled="false"/>
 
         <EditText
             android:id="@+id/editTextText3"
@@ -39,7 +41,8 @@
             android:ems="10"
             android:inputType="text"
             app:layout_column="0"
-            app:layout_row="1" />
+            app:layout_row="1"
+            android:saveEnabled="false"/>
 
         <EditText
             android:id="@+id/editTextText4"
@@ -48,7 +51,8 @@
             android:ems="10"
             android:inputType="text"
             app:layout_column="1"
-            app:layout_row="1" />
+            app:layout_row="1"
+            android:saveEnabled="false"/>
 
     </androidx.gridlayout.widget.GridLayout>
 

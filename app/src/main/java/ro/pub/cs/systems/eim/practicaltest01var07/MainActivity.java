@@ -1,5 +1,6 @@
 package ro.pub.cs.systems.eim.practicaltest01var07;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -28,10 +29,14 @@ public class MainActivity extends AppCompatActivity {
         editText3 = (EditText) findViewById(R.id.editTextText3);
         editText4 = (EditText) findViewById(R.id.editTextText4);
 
-        editText1.setText("1");
-        editText2.setText("2");
-        editText3.setText("3");
-        editText4.setText("4");
+        if ( savedInstanceState != null)
+        {
+            editText1.setText( savedInstanceState.getString("key1"));
+            editText2.setText( savedInstanceState.getString("key2"));
+            editText3.setText( savedInstanceState.getString("key3"));
+            editText4.setText( savedInstanceState.getString("key4"));
+
+        }
 
         setButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,4 +85,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("key1" , editText1.getText().toString());
+        outState.putString("key2" , editText2.getText().toString());
+        outState.putString("key3" , editText3.getText().toString());
+        outState.putString("key4" , editText4.getText().toString());
+
+    }
 }
