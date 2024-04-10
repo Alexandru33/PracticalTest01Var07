@@ -3,6 +3,8 @@ package ro.pub.cs.systems.eim.practicaltest01var07;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,10 +18,25 @@ public class MainActivity extends AppCompatActivity {
     Button setButton ;
     EditText editText1, editText2, editText3, editText4;
 
+    private class MessageBroadcastReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            editText1.setText(intent.getExtras().getString("nr1"));
+            editText2.setText(intent.getExtras().getString("nr2"));
+            editText3.setText(intent.getExtras().getString("nr3"));
+            editText4.setText(intent.getExtras().getString("nr4"));
+
+        }
+    }
+    private final MessageBroadcastReceiver messageBroadcastReceiver = new MessageBroadcastReceiver();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practical_test01_var07_main);
+
+
 
         setButton = (Button ) findViewById(R.id.setButton);
 
@@ -82,6 +99,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Intent intent = new Intent(getApplicationContext(), PracticalTest01Var07Service.class);
+        getApplicationContext().startService(intent);
+
 
     }
 
@@ -94,4 +114,5 @@ public class MainActivity extends AppCompatActivity {
         outState.putString("key4" , editText4.getText().toString());
 
     }
+
 }
